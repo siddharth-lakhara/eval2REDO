@@ -1,3 +1,4 @@
 const users = require('./user');
+const main = require('./main');
 
-module.exports = [].concat(users);
+module.exports = [].concat(main, users);

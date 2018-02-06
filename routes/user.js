@@ -1,8 +1,8 @@
-const mainHandler = require('../handlers/mainHandler');
+const userHandler = require('../handlers/usersHandler');
 
 module.exports = [{
   method: 'GET',
-  path: '/',
+  path: '/user',
   handler: (req, reply) => {
     reply('Working');
   },

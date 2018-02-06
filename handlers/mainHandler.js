@@ -1,4 +1,6 @@
 // handler for path /
-const mainHandler = (req, reply) => {
-  reply('working');
-};
+const mainHandler = () => new Promise((resolve) => {
+  resolve('working with promise');
+});
+
+module.exports = mainHandler;
