@@ -33,7 +33,6 @@ test('Able to connect to API 1', (done) => {
   });
 });
 
-/*
 test('Verify data from API 1', (done) => {
   let dataString = '';
   let dataObject = {};
@@ -102,4 +101,3 @@ test('Verify data from API 1', (done) => {
     });
   });
 });
-*/
