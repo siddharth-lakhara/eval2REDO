@@ -111,10 +111,50 @@ test('Able to connect to API 2 - id 1', (done) => {
   });
 });
 
+test('Verify data from API 2 - id 1', (done) => {
+  let dataString = '';
+  let dataObject = {};
+  const verifyJSON = {
+    rating: 4.45,
+  };
+
+  http.get('http://localhost:8080/ratings/1', (response) => {
+    response.setEncoding('utf8');
+    response.on('data', (data) => {
+      dataString += data;
+    });
+    response.on('end', () => {
+      dataObject = JSON.parse(dataString);
+      expect(dataObject).toEqual(verifyJSON);
+      done();
+    });
+  });
+});
+
 test('Able to connect to API 2 - id 5', (done) => {
   http.get('http://localhost:8080/ratings/5', (response) => {
     expect(response.statusCode).toBe(200);
     response.on('data', () => {
+      done();
+    });
+  });
+});
+
+test('Verify data from API 2 - id 5', (done) => {
+  let dataString = '';
+  let dataObject = {};
+  const verifyJSON = {
+    rating: 4.45,
+  };
+
+  http.get('http://localhost:8080/ratings/5', (response) => {
+    response.setEncoding('utf8');
+    response.on('data', (data) => {
+      dataString += data;
+    });
+    response.on('end', () => {
+      dataObject = JSON.parse(dataString);
+      expect(dataObject).toEqual(verifyJSON);
       done();
     });
   });
