@@ -101,3 +101,21 @@ test('Verify data from API 1', (done) => {
     });
   });
 });
+
+test('Able to connect to API 2 - id 1', (done) => {
+  http.get('http://localhost:8080/ratings/1', (response) => {
+    expect(response.statusCode).toBe(200);
+    response.on('data', () => {
+      done();
+    });
+  });
+});
+
+test('Able to connect to API 2 - id 5', (done) => {
+  http.get('http://localhost:8080/ratings/5', (response) => {
+    expect(response.statusCode).toBe(200);
+    response.on('data', () => {
+      done();
+    });
+  });
+});
