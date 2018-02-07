@@ -1,7 +1,7 @@
 const booksHandler = require('../handlers/booksHandler');
 const ratingsHandler = require('../handlers/ratingsHandler');
 
-const getallHandler = () => new Promise((resolve) => {
+const getallHandler = new Promise((resolve) => {
   let booksJSON = {};
   const promiseArray = [];
   booksHandler().then((returnJSON) => {
@@ -10,16 +10,16 @@ const getallHandler = () => new Promise((resolve) => {
       const id = booksJSON.books[book].id;
       promiseArray.push(ratingsHandler(id));
     }
-    console.log(promiseArray);
-    // console.log('booksJSON: ', booksJSON);
-  });
 
-  Promise.all(promiseArray).then((ratingsJSON) => {
-    console.log('ratings JSON: ', ratingsJSON);
-    for (i in ratingsJSON) {
-      (booksJSON.books[i]).rating = ratingsJSON[i].rating;
-    }
-    resolve(booksJSON);
+    Promise.all(promiseArray).then((ratingsJSON) => {
+      console.log('ratings JSON: ', ratingsJSON);
+      for (i in ratingsJSON) {
+        (booksJSON.books[i]).rating = ratingsJSON[i].rating;
+      }
+      resolve(booksJSON);
+    });
+    // console.log(promiseArray);
+    // console.log('booksJSON: ', booksJSON);
   });
 });
 

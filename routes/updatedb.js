@@ -3,7 +3,7 @@ const Models = require('../models');
 
 module.exports = [{
   method: 'GET',
-  path: '/books',
+  path: '/updatedb',
   handler: (req, reply) => {
     updatedbHandler()
       .then((booksArray) => {

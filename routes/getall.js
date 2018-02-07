@@ -5,7 +5,7 @@ module.exports = [{
   method: 'GET',
   path: '/getall',
   handler: (req, reply) => {
-    getallHandler().then((combinedJSON) => {
+    getallHandler.then((combinedJSON) => {
       reply(combinedJSON);
     });
   },
