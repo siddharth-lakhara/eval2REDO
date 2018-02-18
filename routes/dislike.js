@@ -2,14 +2,14 @@ const Models = require('../models');
 
 module.exports = [{
   method: 'GET',
-  path: '/like/{id}',
+  path: '/dislike/{id}',
   handler: (req, reply) => {
     const bookId = req.params.id;
     Models.likes.update(
-      { like: 1, dislike: 0 },
+      { like: 0, dislike: 1 },
       { where: { bookid: bookId } },
     ).then(() => {
-      reply('Book Liked');
+      reply('Book Disliked');
     });
   },
 }];
