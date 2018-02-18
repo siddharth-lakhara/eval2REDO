@@ -1,13 +1,13 @@
 {
   "development": {
-    "username": "postgres",
+    "username": "eval2",
     "password": "root",
-    "database": "evaluation2",
+    "database": "eval2_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
+    "username": "eval2",
     "password": "root",
     "database": "eval2_test",
     "host": "127.0.0.1",
