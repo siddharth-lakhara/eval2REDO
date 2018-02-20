@@ -2,11 +2,17 @@
 const getallHandler = require('../handlers/getallHandler');
 
 const groupByAuthor = (combinedJSON) => {
-  const sortedObject = [];
-  combinedJSON.map((element) => {
-    console.log();
+  const sortedJSON = {};
+  combinedJSON.books.map((element) => {
+    const author = element.Author;
+
+    if (typeof sortedJSON[author] === 'undefined') {
+      sortedJSON[author] = [];
+    }
+    sortedJSON[author].push({ id: element.id, Name: element.Name, rating: element.rating });
   });
-  return sortedObject;
+  console.log(sortedJSON);
+  return sortedJSON;
 };
 
 module.exports = [{
@@ -15,8 +21,8 @@ module.exports = [{
   handler: (req, reply) => {
     getallHandler.then((combinedJSON) => {
       // console.log(combinedJSON);
-      // const sortedJSON = groupByAuthor(combinedJSON);
-      reply(combinedJSON);
+      const sortedJSON = groupByAuthor(combinedJSON);
+      reply(sortedJSON);
     });
   },
 }];
