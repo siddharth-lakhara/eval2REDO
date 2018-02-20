@@ -11,4 +11,5 @@ server.route(Routes);
 
 server.start((err) => {
   if (err) { console.log(err); }
+  console.log('Server started');
 });

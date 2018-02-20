@@ -12,7 +12,7 @@ const getallHandler = new Promise((resolve) => {
     }
 
     Promise.all(promiseArray).then((ratingsJSON) => {
-      console.log('ratings JSON: ', ratingsJSON);
+      // console.log('ratings JSON: ', ratingsJSON);
       for (i in ratingsJSON) {
         (booksJSON.books[i]).rating = ratingsJSON[i].rating;
       }
